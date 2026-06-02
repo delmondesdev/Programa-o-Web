@@ -14,4 +14,9 @@ public class AlunoController : Controller
 
         return View();
     }
+    public IActionResult Detalhes(int id)
+    {
+        ViewBag.AlunoId = id;
+        return View();
+    }
 }

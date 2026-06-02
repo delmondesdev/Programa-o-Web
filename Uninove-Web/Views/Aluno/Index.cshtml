@@ -1,4 +1,9 @@
-@ViewBag.Nome
+@{
+    ViewData["Title"] = "Perfil do Aluno";
+}
 
-<p>@ViewBag.Curso</p>
-<p>@ViewBag.Semestre</p>
+<h1>Perfil do Aluno</h1>
+
+<p><strong>Nome:</strong> @ViewBag.Nome</p>
+<p><strong>Curso:</strong> @ViewBag.Curso</p>
+<p><strong>Semestre:</strong> @ViewBag.Semestre</p>
