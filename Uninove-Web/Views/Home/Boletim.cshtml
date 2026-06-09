@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Boletim de Notas";
+    var disciplinas = ViewBag.Disciplinas as List<string>;
+    var notas = ViewBag.Notas as List<double>;
+    var media = notas.Average();
+}
+
+<h2>Boletim de Notas</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Disciplina</th>
+            <th>Nota</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < disciplinas.Count; i++)
+        {
+            if (notas[i] >= 7)
+            {
+                <tr style="color: green;">
+                    <td>@disciplinas[i]</td>
+                    <td>@notas[i].ToString("F1")</td>
+                    <td><strong>Aprovado</strong></td>
+                </tr>
+            }
+            else
+            {
+                <tr style="color: red;">
+                    <td>@disciplinas[i]</td>
+                    <td>@notas[i].ToString("F1")</td>
+                    <td><strong>Reprovado</strong></td>
+                </tr>
+            }
+        }
+        <tr>
+            <td colspan="2"><strong>Media Geral</strong></td>
+            <td><strong>@media.ToString("F1")</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+@switch (true)
+{
+    case true when media >= 9:
+        <p>Classificacao: <strong>A</strong> - Excelente!</p>
+        break;
+    case true when media >= 7:
+        <p>Classificacao: <strong>B</strong> - Bom!</p>
+        break;
+    case true when media >= 5:
+        <p>Classificacao: <strong>C</strong> - Regular</p>
+        break;
+    default:
+        <p>Classificacao: <strong>D</strong> - Insuficiente</p>
+        break;
+}

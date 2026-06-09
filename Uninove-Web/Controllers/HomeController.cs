@@ -16,6 +16,32 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Boletim()
+    {
+        var disciplinas = new List<string>
+        {
+            "Matemática",
+            "Português",
+            "História",
+            "Física",
+            "Inglês"
+        };
+
+        var notas = new List<double>
+        {
+            9.5,
+            6.0,
+            4.5,
+            7.8,
+            8.2
+        };
+
+        ViewBag.Disciplinas = disciplinas;
+        ViewBag.Notas = notas;
+
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
